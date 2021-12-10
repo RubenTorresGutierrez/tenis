@@ -272,6 +272,12 @@ class Vista {
     this.canvas.ctx.stroke()
 
     /*
+    //Linea diagonal
+    this.canvas.ctx.lineWidth = 6
+    this.canvas.ctx.moveTo(0, 0)
+    this.canvas.ctx.lineTo(campo.anchura, campo.altura)
+    this.canvas.ctx.stroke()
+
     //Línea de centro
     canvas.ctx.lineWidth = 1
     canvas.ctx.moveTo(WIDTH/4, HEIGHT/2)
@@ -299,8 +305,10 @@ class Vista {
     this.canvas.ctx.fillStyle = this.pelota.color
     this.canvas.ctx.beginPath()
     this.canvas.ctx.arc( //cx, cy, radio, start_angle, end_angle
-      pelota.posicion[0] - this.pelota.radio,
-      pelota.posicion[1], this.pelota.radio, 0, 2 * Math.PI)
+	pelota.posicion[0] - this.pelota.radio,
+	pelota.posicion[1], this.pelota.radio, 0, 2 * Math.PI,
+	true
+    )
     this.canvas.ctx.fill()
   }
   /**
@@ -310,7 +318,7 @@ class Vista {
     for (let i = 0; i < 2; i++) {
       this.canvas.ctx.fillStyle = this.jugadores[i].color
       this.canvas.ctx.fillRect(
-        jugadores[i].posicion[0],
+        jugadores[i].posicion[0] - this.jugadores[i].anchura / 2,
         jugadores[i].posicion[1] - this.jugadores[i].altura / 2,
         this.jugadores[i].anchura,
         this.jugadores[i].altura)
